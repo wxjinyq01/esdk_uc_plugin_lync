@@ -1,0 +1,213 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:LyncWpfApp">
+
+    <SolidColorBrush x:Key="BorderBrush" Color="Transparent"/>
+    <SolidColorBrush x:Key="HoverBrush" Color="Transparent"/>
+    <SolidColorBrush x:Key="ForegroundBrush" Color="#707E8C"/>
+
+    <LinearGradientBrush x:Key="TabControlStrokeBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FFa9cde7" Offset="0"/>
+        <GradientStop Color="#FFe7f4fc" Offset="0.3"/>
+        <GradientStop Color="#FFf2fafd" Offset="0.85"/>
+        <GradientStop Color="#FFe4f6fa" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="TabControlConcentrateBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#DAE6F2" Offset="0"/>
+        <GradientStop Color="#DAE6F2" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="TabControlBackgroundBrush" EndPoint="0.5,0" StartPoint="0.5,1">
+        <GradientStop Color="#E1E1E1" Offset="0"/>
+        <GradientStop Color="#FFFFFF" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="TabItemPathBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#69ADE0" Offset="0"/>
+        <GradientStop Color="#448CD2" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="TabItemConcentratePathBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#2FA5FF" Offset="0"/>
+        <GradientStop Color="#2FA5FF" Offset="1"/>
+    </LinearGradientBrush>
+    <!-- TabControl style -->
+
+    <Style x:Key="TabControlStyleCustom" TargetType="{x:Type TabControl}">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabControl">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="1" BorderThickness="2,0,2,2" Panel.ZIndex="2" CornerRadius="0,0,2,2"
+                                BorderBrush="{StaticResource BorderBrush}" 
+                                Background="{StaticResource TabControlBackgroundBrush}" >
+                            <ContentPresenter ContentSource="SelectedContent" />
+                        </Border>
+                        <StackPanel Orientation="Horizontal" Grid.Row="0" Panel.ZIndex="1" IsItemsHost="true"/>
+                        <Rectangle Grid.Row="0" Height="2" VerticalAlignment="Bottom" Fill="{StaticResource BorderBrush}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <LinearGradientBrush x:Key="FontForeground" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#000000" Offset="0"/>
+        <GradientStop Color="#000000" Offset="1"/>
+    </LinearGradientBrush>
+    <Style x:Key="TabItem" TargetType="{x:Type TabItem}">
+        <Setter Property="Height" Value="33"/>
+        <Setter  Property="FocusVisualStyle" Value="{x:Null}"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource FontForeground}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Grid x:Name="grd" Cursor="Hand">
+                        <Path x:Name="TabPath" StrokeThickness="0" Fill="{StaticResource TabControlStrokeBrush}" Stroke="{StaticResource BorderBrush}" 
+                              >
+                        </Path>
+                        <ContentPresenter x:Name="TabItemContent"  Cursor="Hand"   ContentSource="Header"  Margin="20,0,0,0" VerticalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Selector.IsSelected" Value="True">
+                            <Setter Property="Padding" Value="100,0,0,0"/>
+                            <Setter Property="TextElement.FontSize" TargetName="TabItemContent" Value="13"/>
+                            <Setter  Property="TextElement.Foreground" TargetName="TabItemContent" Value="#f9f9f9"/>
+                            <Setter Property="TextElement.FontWeight" TargetName="TabItemContent" Value="Bold"/>
+                            <Setter Property="Fill" TargetName="TabPath" Value="{StaticResource TabItemPathBrush}">
+
+                            </Setter>
+
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TabItemConcentrate" TargetType="{x:Type TabItem}">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource FontForeground}"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="#2388D0" ></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Grid>
+                        <Rectangle Fill="#FFFFFF"/>
+                        <Grid x:Name="grd" Cursor="Hand" Margin="0,1,1,0">
+                            <Path x:Name="TabPath" StrokeThickness="0" Fill="{StaticResource TabControlConcentrateBrush}" Stroke="{StaticResource BorderBrush}" 
+                            />
+                            <ContentPresenter x:Name="TabItemContent"  Cursor="Hand"   ContentSource="Header"  Margin="20,0,0,0" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Selector.IsSelected" Value="True">
+                            <Setter Property="Padding" Value="100,0,0,0"/>
+                            <Setter Property="TextElement.FontSize" TargetName="TabItemContent" Value="13"/>
+                            <Setter  Property="TextElement.Foreground" TargetName="TabItemContent" Value="#2388D0"/>
+                            <Setter Property="TextElement.FontWeight" TargetName="TabItemContent" Value="Bold"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <SolidColorBrush x:Key="TabControlNormalBorderBrush" Color="Black"/>
+    <!-- 应该在此定义资源字典条目。-->
+    <Style x:Key="TabControlStyle" TargetType="{x:Type TabControl}">        
+      
+    </Style>
+    <Style x:Key="tabitem" TargetType="{x:Type TabItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <Grid>
+                        <Border Name="Border" Background="#2388D0" BorderThickness="3" CornerRadius="6">
+                            <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="6,2,6,2"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="#2388D0" />
+                            <Setter TargetName="Border" Property="TextElement.FontWeight" Value="Bold"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="#e6e9ef" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="TabItemCall" TargetType="{x:Type TabItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <Grid>
+                        <Border Name="Border" Background="#2388D0" BorderThickness="3" CornerRadius="6">
+                            <DockPanel >
+                                <Image Source="/Image/call/telhistory.png" Width="30" Height="28"></Image>
+                                <Label Content="{DynamicResource CallHistory}"></Label>
+                                    <!--<ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="6,2,6,2"/>-->
+                            </DockPanel>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="#2388D0" />
+                            <Setter TargetName="Border" Property="TextElement.FontWeight" Value="Bold"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="#e6e9ef" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TabItemConference" TargetType="{x:Type TabItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <Grid>
+                        <Border Name="Border" Background="#2388D0" BorderThickness="3" CornerRadius="6">
+                            <DockPanel >
+                                <Image Source="/Image/call/meetinghistory.png" Width="30" Height="28"></Image>
+                                <Label Content="{DynamicResource ConferenceHistory}"></Label>
+                                <!--<ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="6,2,6,2"/>-->
+                            </DockPanel>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="#2388D0" />
+                            <Setter TargetName="Border" Property="TextElement.FontWeight" Value="Bold"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="#e6e9ef" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+</ResourceDictionary>

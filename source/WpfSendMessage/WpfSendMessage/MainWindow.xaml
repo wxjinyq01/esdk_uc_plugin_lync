@@ -1,0 +1,8 @@
+﻿<Window x:Class="WpfSendMessage.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="2" Width="2" ShowInTaskbar="False" WindowStyle="None" WindowState="Minimized">
+    <Grid>
+
+    </Grid>
+</Window>

@@ -1,0 +1,11 @@
+﻿<Window x:Class="LyncWpfApp.FrmToolBar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="" Height="40" Width="454" WindowStyle ="None"   AllowsTransparency="True" 
+        xmlns:controls="clr-namespace:Microsoft.Lync.Controls;assembly=Microsoft.Lync.Controls" ShowInTaskbar="False" VerticalAlignment="Top"> 
+        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Width="250" VerticalAlignment="Top" Height="50">
+        <controls:StartAudioCallButton Name="startAudioCallButton"  Width="49" VerticalAlignment="Top"  MouseLeftButtonDown="startAudioCallButton_MouseLeftButtonDown"/>
+        <controls:StartVideoCallButton Name="startVideoCallButton"  Width="49" VerticalAlignment="Top" MouseLeftButtonDown="startVideoCallButton_MouseLeftButtonDown"/>
+    </StackPanel>
+ 
+</Window>
